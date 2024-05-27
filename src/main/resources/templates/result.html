@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/result.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 th:text="${subtitle}"></h1>
+        <div>
+            <p th:text="'UserName:'+${name}"></p>
+            <p th:text="'難易度:'+${ele_num}"></p>
+            <p th:text="'スコアタイム:'+${time}+'(ms)'"></p>
+        </div>
+        <div>
+            <a th:href="@{/history}">Myゲーム結果履歴</a>
+            <a th:href="@{/index}">ホーム画面</a>
+            <form th:action="@{/game}" method="post">
+                <input type="hidden" name="ele_num" th:value="${ele_num}" hidden>
+                <input type="submit" value="もう一度">
+            </form>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

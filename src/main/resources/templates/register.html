@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="container">
+        <script th:src="@{/js/check.js}"></script>
+        <h1 th:text="${subtitle}"></h1>
+        <p th:text="${err}"></p>
+        <form th:action= "@{/register}" method="post" th:object="${user}">
+            <label for="name">UserName</label>   
+            <input type="text" th:field="*{name}" onkeyup="registerinputCheck()" onclick="registerinputCheck()" onchange="registerinputCheck()">
+            <br>
+            <label for="pass">password(合言葉)</label>   
+            <input type="password" id="pass" name="pass" th:value="*{pass}" onkeyup="registerinputCheck()" onclick="registerinputCheck()" onchange="registerinputCheck()">
+            <br>
+            <label for="age">Age</label>
+            <input type="number" th:field="*{age}" min="0" max="120" onkeyup="registerinputCheck()" onclick="registerinputCheck()" onchange="registerinputCheck()">
+            <br>
+            <label for="gender">Gender</label>
+            <select th:field="*{gender}"  onkeyup="registerinputCheck()" onclick="registerinputCheck()" onchange="registerinputCheck()">
+                <option value="" selected disabled>---</option>
+                <option value="男性">男性</option>
+                <option value="女性">女性</option>
+            </select>
+            <input type="submit" value="登録" disabled id="registerbtn">
+        </form>
+        <a th:href="@{/login}">ログイン画面</a>
+    </div>
+</body>
+
+</html>

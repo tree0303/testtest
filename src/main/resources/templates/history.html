@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/history.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 th:text="${subtitle}"></h1>
+        <div>
+            <h3 id="name" th:text="${name}+'さん'"></h3>
+        </div>
+        <div>
+            <p th:text="${ele_num}"></p>
+            <p th:text="${time}"></p>
+        </div>
+        <div>
+            <div>
+                <form action="/history" method="post">
+                    <select name="ele_num" id="ele_num">
+                        <option value="0">all</option>
+                        <option th:each="elenum:${ele_nums}" th:value="${elenum}" th:text="${elenum}"></option>
+                    </select>
+                    <input type="submit" value="条件検索">
+                </form>
+            </div>
+            <table>
+                <tr>
+                    <th>難易度</th>
+                    <th>タイムスコア</th>
+                    <th>     </th>
+                </tr>
+                <tr th:each="data:${datas}">
+                    <td th:text="${data.eleNum}"></td>
+                    <td th:text="${data.time}"></td>
+                    <td>
+                        <form action="/delete" method="post">
+                            <input type="text" id="id" name="id" th:value="${data.id}" hidden>
+                            <input type="submit" value="削除">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <a th:href="@{/index}">ホーム画面</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

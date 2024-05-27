@@ -1,0 +1,46 @@
+/* game.htmlに対応するスタイル */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 40%;
+    margin: 0 auto;
+    padding: 30px;
+    border: black 2px solid;
+    border-radius: 30px;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #000;
+}
+
+#start-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#start-btn:hover {
+    background-color: #0056b3;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+

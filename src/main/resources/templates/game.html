@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/game.css}" rel="stylesheet">
+    <script th:src="@{/js/game.js}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 th:text="${subtitle}"></h1>
+        <div>
+            <a th:href= "@{/index}">ホーム画面</a>
+            <p id="name" th:value="${name}">UserName: <span th:text="${name}"></span></p>
+            <p id="element_num" th:value="${element_num}">難易度: <span th:text="${element_num}"></span></p>
+            <p>経過時間： <span id="time">0:00:000</span> ms</p>
+
+        </div>
+        <div>
+            <canvas id="can" width="500" height="400">
+
+            </canvas>
+            <button id="start-btn">Start Game</button>
+        </div>
+
+    </div>
+</body>
+
+</html>

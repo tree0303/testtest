@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="container">
+        <script th:src="@{/js/check.js}"></script>
+        <h1 th:text="${subtitle}"></h1>
+        <div>
+            <p th:text="${err}"></p>
+            <div>
+                <h3 id="name" th:text="${name}+'さん'"></h3>
+            </div>
+            <form th:action="@{/game}" method="post">
+                <div>
+                    <label for="element_num">難易度</label>
+                    <input type="number" id="ele_num" min="3" name="ele_num" value="3" onkeyup="indexinputCheck()"
+                        onchange="indexinputCheck()">
+                    <input type="submit" value="ゲーム開始" id="startbtn">
+                </div>
+            </form>
+            <div>
+                <form th:action="@{/index}" method="post">
+                    <select name="ele_num" id="ele_num">
+                        <option value="0">recently</option>
+                        <option th:each="elenum:${ele_nums}" th:value="${elenum}" th:text="${elenum}"></option>
+                    </select>
+                    <input type="submit" value="条件検索">
+                </form>
+            </div>
+        </div>
+        <div>
+            <legend th:text="${legend}"></legend>
+            <table>
+                <tr>
+                    <th>UserName</th>
+                    <th>難易度</th>
+                    <th>スコアタイム</th>
+                </tr>
+                <tr th:if="${!#lists.isEmpty(datas)}" th:each="data:${datas}">
+                    <td th:text="${data.userName}"></td>
+                    <td th:text="${data.scoreNum}"></td>
+                    <td th:text="${data.scoreTime}"></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <a th:href="@{/change}">My情報</a>
+        <a th:href="@{/history}">Myゲーム結果履歴</a>
+        <a th:href="@{/logout}">ログアウト</a>
+    </div>
+
+</body>
+
+</html>

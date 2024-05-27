@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/change.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <script th:src="@{/js/check.js}"></script>
+    <div class="container">
+        <h1 th:text="${subtitle}"></h1>
+        <form th:action="@{/change}" method="post" th:object="${userform}">
+            <div>
+                <label for="name" th:text="'UserName'"></label>
+                <input type="text" id="name" name="name" th:placeholder="${original_name}" th:field="*{name}" onkeyup="changeinputCheck()"
+                    onclick="changeinputCheck()" onchange="changeinputCheck()">
+
+                <br>
+                <label for="age" th:text="'Age'"></label>
+                <input type="number" id="age" name="age" min="0" max="120" th:placeholder="${original_age}" th:field="*{age}" onkeyup="changeinputCheck()"
+                    onclick="changeinputCheck()" onchange="changeinputCheck()">
+
+                <br>
+                <label for="gender" th:text="'Gender'"></label>
+                <select th:field="*{gender}" th:value="${original_gender}" name="gender" id="gender" onkeyup="changeinputCheck()"
+                    onclick="changeinputCheck()" onchange="changeinputCheck()">
+                    <option value="" selected disabled>---</option>
+                    <option value="男性">男性</option>
+                    <option value="女性">女性</option>
+                </select>
+                <input type="submit" value="変更" id="registerbtn" disabled>
+            </div>
+        </form>
+        <a th:href= "@{/index}">ホーム画面</a>
+    </div>
+</body>
+
+</html>

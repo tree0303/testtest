@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="container">
+        <script th:src="@{/js/check.js}"></script>
+        <h1 th:text="${subtitle}"></h1>
+        <p th:text="${err}"></p>
+        <form th:action= "@{/login}" method="post">
+            <div>
+                <label for="name">UserName</label>
+                <input type="text" id="name" name="name" onkeyup="logininputCheck()">
+                <label for="pass">Password(合言葉)
+                </label>
+                <input type="password" id="pass" name="pass" onkeyup="logininputCheck()">
+                <input type="submit" value="ログイン" disabled id="login">
+            </div>
+        </form>
+    
+        <a th:href= "@{/register}">アカウント登録</a>
+    </div>
+</body>
+
+</html>
